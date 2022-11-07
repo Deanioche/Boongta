@@ -1,0 +1,173 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    background-color: gainsboro;
+    border-radius: 5px;
+}
+
+/*************************************************************
+
+                            Menu Panel
+
+*************************************************************/
+
+.start_panel {
+    position: absolute;
+    background-color: #545454aa;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.start_panel .btn_start {
+    background-color: whitesmoke;
+    border: 4px solid;
+    border-radius: 10px;
+    width: 70px;
+    height: 50px;
+}
+
+.game_over_panel {
+    background-color: #545454aa;
+}
+
+.invisible {
+    display: none;
+}
+
+
+/*************************************************************
+
+                            Score Panel
+
+*************************************************************/
+
+
+.money_panel {
+    width: 400px;
+    display: flex;
+    /* background-color: ghostwhite; */
+}
+
+.money_panel > * {
+    padding: 0 5px 0 5px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.tick  {
+    width: 75%;
+    height: 20px;
+
+}
+
+.tick .gauge {
+    border-radius: 5px;
+    background-color: rgb(88, 202, 164);
+    width: 0%;
+}
+
+.gauge span {
+    margin: 5px;
+    white-space: nowrap;
+}
+
+/* .money {
+
+} */
+
+/*************************************************************
+
+                            Game Panel
+
+*************************************************************/
+
+.game_panel {
+    width: 400px;
+    height: 300px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.visitor_panel {
+    grid-column: 1 / span 2;
+    /* background-color: white; */
+
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    font-size: 50px;
+}
+
+.visitor_panel demand {
+    font-size: 25px;
+}
+
+.tray_panel {
+    background-color: burlywood;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    overflow-y: auto;
+}
+
+.tray_panel .tray {
+    padding: 1px;
+    border: 0.1px solid;
+    height: 35px;
+    border-radius: 5px;
+}
+
+.slot_panel {
+    background-color: lightgray;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.slot {
+    background-color: rgb(111, 128, 144);
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 10px;
+    margin: 1px;
+    text-align: center;
+    cursor: pointer;
+}
+
+/*************************************************************
+
+                            effect 
+
+*************************************************************/
+
+@keyframes blink-effect {
+    25% {
+        color: white;
+        background-color: red;
+    }
+    75% {
+        background-color: white;
+        color: red;
+    }
+}
+
+.blink {
+    animation: blink-effect 0.25s step-end infinite;
+
+    /*
+  animation-name: blink-effect;
+  animation-duration: 1s;
+  animation-iteration-count:infinite;
+  animation-timing-function:step-end;
+  */
+}
