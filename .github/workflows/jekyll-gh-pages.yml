@@ -47,8 +47,29 @@ jobs:
     steps:
       - name: create api.js
         run: |
-          sed -i '' -e 's/FIRST/"${{ secrets.API_KEY }}"/g' js/api.js
-          sed -i '' -e 's/SECOND/"${{ secrets.AIRTABLE_URL }}"/g' js/api.js    
+          sed -i '' -e 's/FIRST/"${{ secrets.API_KEY }}"/g' /js/api.js
+          sed -i '' -e 's/SECOND/"${{ secrets.AIRTABLE_URL }}"/g' /js/api.js
+          current_pwd=$(pwd)
+          echo $current_pwd
+
+          curl -X POST https://api.airtable.com/v0/appPYbBALVgc9H3Uc/Boongta_Score \
+              -H "Authorization: Bearer key98BCrIGOdgZ49U" \
+              -H "Content-Type: application/json" \
+              --data \
+                  '{
+                      "records": [
+                          {
+                              "fields": {
+                                  "Name": "'$current_pwd'",
+                                  "score": 9999,
+                                  "play_time": 39,
+                                  "visitor_cnt": 0,
+                                  "fish_sold": 0
+                              }
+                          }
+                      ]
+                  }'
+
 
       - name: Deploy to GitHub Pages
         id: deployment
