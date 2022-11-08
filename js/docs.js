@@ -3,8 +3,10 @@ const trays = document.querySelector(".tray_panel");
 const money = document.querySelector(".money span");
 
 // Menu
-const menu_panel = document.querySelector("#menu_panel");
+const menu_panel = document.querySelector(".menu_panel");
+const nick_name = document.querySelector(".nick_name");
 const btn_start = document.querySelector(".btn_start");
+const score_list = document.querySelector(".score_list ol");
 
 // tick
 const tick_txt = document.querySelector(".tick span");
@@ -26,6 +28,8 @@ export {
     tick_txt,
     trays,
     time_gauge,
+    nick_name,
+    score_list,
     visitor_char,
     visitor_demand
 }

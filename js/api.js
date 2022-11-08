@@ -1,4 +1,4 @@
-const AIRTABLE_TOKEN = '${{ secrets.API_KEY }}';
-const AIRTABLE_URL = '${{ secrets.AIRTABLE_URL }}';
+const TOKEN = 'Bearer key98BCrIGOdgZ49U';
+const URL = 'https://api.airtable.com/v0/appPYbBALVgc9H3Uc/Boongta_Score';
 
-export default {AIRTABLE_TOKEN, AIRTABLE_URL};
+export {TOKEN, URL};

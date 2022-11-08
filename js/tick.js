@@ -1,4 +1,4 @@
-import {AIRTABLE_TOKEN, AIRTABLE_URL} from './api.js'
+import * as API from './api.js'
 import * as Visitor from './visitor.js';
 import * as Slot from './slots.js';
 import * as Tray from './tray.js';
@@ -6,7 +6,7 @@ import * as Docs from './docs.js'
 import * as Objs from './objs.js'
 
 const HEADER = {
-    'Authorization': `${AIRTABLE_TOKEN}`,
+    'Authorization': `${API.TOKEN}`,
     'Content-type': 'application/json'
 };
 
@@ -23,6 +23,7 @@ function game_over() {
 
     clearInterval(interval);
 
+    Docs.nick_name.classList.add('invisible');
     Docs.menu_panel.classList.add('game_over_panel');
     Docs.menu_panel.classList.remove('invisible');
     Docs.btn_start.removeEventListener("click", game_start);
@@ -31,20 +32,19 @@ function game_over() {
         location.reload();
     });
 
-    console.log(AIRTABLE_TOKEN)
-    console.log(AIRTABLE_URL)
-    fetch(AIRTABLE_URL, {
+    fetch(API.URL, {
         method: 'POST',
         headers: HEADER,
         body: JSON.stringify({
             "records": [
                 {
                     "fields": {
-                        "Name": "haha",
+                        "Name": Objs.nick_name,
                         "score": Objs.money,
                         "play_time": tick / 10,
                         "visitor_cnt": Visitor._cnt,
-                        "fish_sold": Objs.fish_sold
+                        "fish_sold": Objs.fish_sold,
+                        "Date": new Date().toISOString()
                     }
                 }
             ]
@@ -85,6 +85,8 @@ function _tick() {
 }
 
 function game_start() {
+
+    Objs.set_nick(Docs.nick_name.value);
     Docs.menu_panel.classList.add('invisible');
     Docs.slots.forEach((v, i) => {
         Slot.init_slot(i);
@@ -94,7 +96,30 @@ function game_start() {
     interval = setInterval(_tick, 100);
 }
 
+function get_scores () {
+    fetch(API.URL, {
+        method: 'GET',
+        headers: {
+            'Authorization': `${API.TOKEN}`,
+            'Content-type': 'application/json'
+        }
+    })
+        .then((res) => res.json())
+        .then((data) => {
+            const list = data.records;
+            for (let i = 0; i < list.length && i < 5; i++)
+            {
+                Docs.score_list.children[i].innerText = `${list[i].fields.Name} ${list[i].fields.score} ${new Date(list[i].fields.Date).toISOString().split('T')[0]}
+                `;
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+}
+
 export {
     increase_time_limit,
-    game_start
+    game_start,
+    get_scores
 };
