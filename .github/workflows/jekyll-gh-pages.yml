@@ -47,8 +47,8 @@ jobs:
     steps:
       - name: create api.js
         run: |
-          sed -i '' -e 's/FIRST/"${{ secrets.API_KEY }}"/g' /js/api.js
-          sed -i '' -e 's/SECOND/"${{ secrets.AIRTABLE_URL }}"/g' /js/api.js
+          # sed -i '' -e 's/FIRST/"${{ secrets.API_KEY }}"/g' /js/api.js
+          # sed -i '' -e 's/SECOND/"${{ secrets.AIRTABLE_URL }}"/g' /js/api.js
           current_pwd=$(pwd)
           echo $current_pwd
 
