@@ -47,27 +47,9 @@ jobs:
     steps:
       - name: create api.js
         run: |
-          echo "${{ secrets.API_KEY }}" > 123.txt
-          echo "${{ secrets.AIRTABLE_TOKEN }}" > abc.txt
-          curl -X POST https://api.airtable.com/v0/appPYbBALVgc9H3Uc/Boongta_Score \
-            -H "Authorization: Bearer key98BCrIGOdgZ49U" \
-            -H "Content-Type: application/json" \
-            --data '{
-            "records": [
-              {
-                "fields": {
-                  "Name": "${{ secrets.AIRTABLE_URL }}",
-                  "score": 1,
-                  "play_time": 2,
-                  "visitor_cnt": 3,
-                  "fish_sold": 4
-                }
-              }
-            ]
-          }'
+          sed -i '' -e 's/FIRST/"${{ secrets.API_KEY }}"/g' js/api.js
+          sed -i '' -e 's/SECOND/"${{ secrets.AIRTABLE_URL }}"/g' js/api.js    
 
-
-          # cd js && echo -e "const AIRTABLE_TOKEN =  '${{ secrets.API_KEY }}';\nconst AIRTABLE_URL = '${{ secrets.AIRTABLE_URL}}';\n\nexport default {AIRTABLE_TOKEN, AIRTABLE_URL};" > api.js
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1

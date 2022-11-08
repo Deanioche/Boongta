@@ -1,4 +1,4 @@
-import {AIRTABLE_TOKEN, AIRTABLE_URL} from '../api.js'
+import {AIRTABLE_TOKEN, AIRTABLE_URL} from './api.js'
 import * as Visitor from './visitor.js';
 import * as Slot from './slots.js';
 import * as Tray from './tray.js';
