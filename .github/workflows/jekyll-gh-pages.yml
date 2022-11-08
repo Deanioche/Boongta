@@ -39,7 +39,7 @@ jobs:
       - name: create api.js
         run: |
           cd js
-          echo "const AIRTABLE_TOKEN = '${{ secrets.API_KEY }}';\nconst AIRTABLE_URL = '${{ secrets.AIRTABLE_URL }}';\n\nexport default {AIRTABLE_TOKEN, AIRTABLE_URL};" > test.js
+          echo "const AIRTABLE_TOKEN = '${{ secrets.API_KEY }}';\nconst AIRTABLE_URL = '${{ secrets.AIRTABLE_URL }}';\n\nexport default {AIRTABLE_TOKEN, AIRTABLE_URL};" > api.js
 
 
   # Deployment job
