@@ -39,8 +39,8 @@ jobs:
       - name: create api.js
         run: |
           cd js
-          sed -i 's/FIRST/"${{ secrets.API_KEY }}"/g' api.js
-          sed -i 's/SECOND/"${{ secrets.AIRTABLE_URL }}"/g' api.js
+          sed -i '' -e 's/FIRST/"${{ secrets.API_KEY }}"/g' api.js
+          sed -i '' -e 's/SECOND/"${{ secrets.AIRTABLE_URL }}"/g' api.js
           # echo "const AIRTABLE_TOKEN = '${{ secrets.API_KEY }}';\nconst AIRTABLE_URL = '${{ secrets.AIRTABLE_URL }}';\n\nexport default {AIRTABLE_TOKEN, AIRTABLE_URL};" > api.js
 
 
