@@ -36,9 +36,6 @@ jobs:
           destination: ./_site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
-      - name: create api.js
-        run: |
-          echo -e "const AIRTABLE_TOKEN = 'Bearer key98BCrIGOdgZ49U';\nconst AIRTABLE_URL = 'https://api.airtable.com/v0/appPYbBALVgc9H3Uc/Boongta_Score';\n\nexport default {AIRTABLE_TOKEN, AIRTABLE_URL};" > js/api.js
 
   # Deployment job
   deploy:
@@ -48,6 +45,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: create api.js
+        run: |
+          echo -e "const AIRTABLE_TOKEN = 'Bearer key98BCrIGOdgZ49U';\nconst AIRTABLE_URL = 'https://api.airtable.com/v0/appPYbBALVgc9H3Uc/Boongta_Score';\n\nexport default {AIRTABLE_TOKEN, AIRTABLE_URL};" > js/api.js
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
