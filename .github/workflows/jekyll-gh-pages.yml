@@ -36,13 +36,6 @@ jobs:
           destination: ./_site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
-      - name: create api.js
-        run: |
-          cd js
-          sed -i '' -e 's/FIRST/"${{ secrets.API_KEY }}"/g' api.js
-          sed -i '' -e 's/SECOND/"${{ secrets.AIRTABLE_URL }}"/g' api.js
-          # echo "const AIRTABLE_TOKEN = '${{ secrets.API_KEY }}';\nconst AIRTABLE_URL = '${{ secrets.AIRTABLE_URL }}';\n\nexport default {AIRTABLE_TOKEN, AIRTABLE_URL};" > api.js
-
 
   # Deployment job
   deploy:
