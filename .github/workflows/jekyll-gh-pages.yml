@@ -39,14 +39,16 @@ jobs:
       - name: create api.js
         run: |
           echo $(ls)
-          echo "123" > test.txt
-          sed -i 's/123/abccc/g' test.txt
-          cat test.txt
+          echo "123" > test.js
+          cat test.js
+          sed -i 's/123/abccc/g' test.js
+          cat test.js
           cd js
           echo $(ls)
-          echo "123" > test.txt
-          sed -i 's/123/abccc/g' test.txt
-          cat test.txt
+          echo "123" > test.js
+          cat test.js
+          sed -i 's/123/abccc/g' test.js
+          cat test.js
           # sed -i '' -e 's/FIRST/"${{ secrets.API_KEY }}"/g' api.js
           # sed -i '' -e 's/SECOND/"${{ secrets.AIRTABLE_URL }}"/g' api.js
 
