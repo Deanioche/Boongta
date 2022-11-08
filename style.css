@@ -41,7 +41,7 @@ body {
 .score_list {
     margin-top: 100px;
     width: 50%;
-    max-width: 300px;
+    max-width: 400px;
     height: 40%;
     background-color: #caffedcc;
     border: 0.1px solid;
@@ -61,12 +61,12 @@ body {
     padding: 30px;
     align-items: stretch;
     overflow-y: auto;
-    word-wrap: nowrap;
     /* background-color: rebeccapurple; */
 }
 
 .score_list > ol > li {
     margin-top: 5px;
+    word-wrap: nowrap;
 }
 
 .nick_name {
