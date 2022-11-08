@@ -38,32 +38,7 @@ jobs:
         uses: actions/upload-pages-artifact@v1
       - name: create api.js
         run: |
-          echo -e "const AIRTABLE_TOKEN = 'api-token';\n\nexport default AIRTABLE_TOKEN;" > js/api.js
-          curl -X POST https://api.airtable.com/v0/appPYbBALVgc9H3Uc/Boongta_Score \
-            -H "Authorization: Bearer key98BCrIGOdgZ49U" \
-            -H "Content-Type: application/json" \
-            --data '{
-            "records": [
-              {
-                "fields": {
-                  "Name": "zzzzzzz",
-                  "score": 500,
-                  "play_time": 3,
-                  "visitor_cnt": 1,
-                  "fish_sold": 0
-                }
-              },
-              {
-                "fields": {
-                  "Name": "hhhhhhh",
-                  "score": 500,
-                  "play_time": 3,
-                  "visitor_cnt": 0,
-                  "fish_sold": 0
-                }
-              }
-            ]
-          }'
+          echo -e "const AIRTABLE_TOKEN = 'Bearer key98BCrIGOdgZ49U';\nconst AIRTABLE_URL = 'https://api.airtable.com/v0/appPYbBALVgc9H3Uc/Boongta_Score';\n\nexport default {AIRTABLE_TOKEN, AIRTABLE_URL};" > js/api.js
 
   # Deployment job
   deploy:

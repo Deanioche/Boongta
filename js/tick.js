@@ -1,12 +1,12 @@
+import {AIRTABLE_TOKEN, AIRTABLE_URL} from './api.js'
 import * as Visitor from './visitor.js';
 import * as Slot from './slots.js';
 import * as Tray from './tray.js';
 import * as Docs from './docs.js'
 import * as Objs from './objs.js'
 
-const URL = `https://api.airtable.com/v0/appPYbBALVgc9H3Uc/Boongta_Score`;
 const HEADER = {
-    'Authorization': 'Bearer key98BCrIGOdgZ49U',
+    'Authorization': `${AIRTABLE_TOKEN}`,
     'Content-type': 'application/json'
 };
 
@@ -31,12 +31,9 @@ function game_over() {
         location.reload();
     });
 
-    if (HEADER.Authorization == '')
-    {
-        console.log(`no API_Key`);
-        return;
-    }
-    fetch(URL, {
+    console.log(AIRTABLE_TOKEN)
+    console.log(AIRTABLE_URL)
+    fetch(AIRTABLE_URL, {
         method: 'POST',
         headers: HEADER,
         body: JSON.stringify({
