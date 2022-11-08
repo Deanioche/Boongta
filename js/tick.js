@@ -109,8 +109,15 @@ function get_scores () {
             const list = data.records;
             for (let i = 0; i < list.length && i < 5; i++)
             {
-                Docs.score_list.children[i].innerText = `${list[i].fields.Name} ${list[i].fields.score} ${new Date(list[i].fields.Date).toISOString().split('T')[0]}
-                `;
+                let _li = document.createElement('li');
+                const name = `[ ${list[i].fields.Name} ]`;
+                const score = `score : ${list[i].fields.score}`;
+
+                let tmp = new Date(new Date(list[i].fields.Date).getTime() + 9 * 60 * 60 * 1000).toISOString().split('T');
+                const date = `${tmp[0]} ${tmp[1].split('.')[0]}`;
+
+                _li.innerHTML =  `${name}\t${score}\t${date}`;
+                Docs.score_list.appendChild(_li);
             }
         })
         .catch((error) => {

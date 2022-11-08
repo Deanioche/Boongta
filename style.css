@@ -59,14 +59,12 @@ body {
 
 .score_list > ol {
     padding: 30px;
-    align-items: stretch;
     overflow-y: auto;
-    /* background-color: rebeccapurple; */
+    width: 300px;
 }
 
 .score_list > ol > li {
     margin-top: 5px;
-    word-wrap: nowrap;
 }
 
 .nick_name {

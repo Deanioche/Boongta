@@ -3,7 +3,7 @@ import * as Docs from './js/docs.js'
 import * as Objs from './js/objs.js'
 
 function init_game() {
-    Tick.increase_time_limit(3);
+    Tick.increase_time_limit(30);
     Objs.add_money(500);
     Tick.get_scores();
 
