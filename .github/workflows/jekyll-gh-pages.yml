@@ -38,11 +38,10 @@ jobs:
         uses: actions/upload-pages-artifact@v1
       - name: create api.js
         run: |
-          echo "${{ secrets.AIRTABLE_URL }}" > url.txt
-          cat url.txt
+          cd js
           echo $(ls)
-          sed -i '' -e 's/FIRST/"${{ secrets.API_KEY }}"/g' js/api.js
-          sed -i '' -e 's/SECOND/"${{ secrets.AIRTABLE_URL }}"/g' js/api.js
+          sed -i '' -e 's/FIRST/"${{ secrets.API_KEY }}"/g' api.js
+          sed -i '' -e 's/SECOND/"${{ secrets.AIRTABLE_URL }}"/g' api.js
 
 
   # Deployment job
