@@ -1,4 +1,0 @@
-const AIRTABLE_TOKEN = FIRST;
-const AIRTABLE_URL = SECOND;
-
-export default {AIRTABLE_TOKEN, AIRTABLE_URL};
