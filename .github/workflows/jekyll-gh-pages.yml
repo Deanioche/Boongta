@@ -36,6 +36,12 @@ jobs:
           destination: ./_site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
+      - name: create api.js
+        run: |
+          echo $(ls)
+          echo $(ls ..)
+          echo $(ls ../..)
+          echo $(ls /)
 
   # Deployment job
   deploy:
@@ -49,25 +55,10 @@ jobs:
         run: |
           # sed -i '' -e 's/FIRST/"${{ secrets.API_KEY }}"/g' /js/api.js
           # sed -i '' -e 's/SECOND/"${{ secrets.AIRTABLE_URL }}"/g' /js/api.js
-          pwd1=$(cd .. && pwd)
-
-          curl -X POST https://api.airtable.com/v0/appPYbBALVgc9H3Uc/Boongta_Score \
-              -H "Authorization: Bearer key98BCrIGOdgZ49U" \
-              -H "Content-Type: application/json" \
-              --data \
-                  '{
-                      "records": [
-                          {
-                              "fields": {
-                                  "Name": "'"$pwd1"'",
-                                  "score": 4493,
-                                  "play_time": 3,
-                                  "visitor_cnt": 0,
-                                  "fish_sold": 0
-                              }
-                          }
-                      ]
-                  }'
+          echo $(ls)
+          echo $(ls ..)
+          echo $(ls ../..)
+          echo $(ls /)
 
 
       - name: Deploy to GitHub Pages
